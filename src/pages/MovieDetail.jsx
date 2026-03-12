@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchMovieDetails } from '../services/movieService';
+import Loading from '../components/Loading';
+import ErrorMessage from '../components/ErrorMessage';
 
 const IMG_URL_LARGE = 'https://image.tmdb.org/t/p/w500';
 
@@ -8,14 +10,21 @@ function MovieDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [movie, setMovie] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  function loadMovie() {
+    setLoading(true);
+    setError(null);
+    fetchMovieDetails(id)
+      .then((data) => setMovie(data))
+      .catch(() => setError('Não foi possível carregar os detalhes do filme.'))
+      .finally(() => setLoading(false));
+  }
 
   useEffect(() => {
-    fetchMovieDetails(id).then((data) => setMovie(data));
+    loadMovie();
   }, [id]);
-
-  if (!movie) {
-    return <p style={styles.loading}>Carregando...</p>;
-  }
 
   return (
     <main style={styles.main}>
@@ -23,39 +32,47 @@ function MovieDetail() {
         ← Voltar
       </button>
 
-      <div style={styles.content}>
-        <img
-          src={
-            movie.poster_path
-              ? `${IMG_URL_LARGE}${movie.poster_path}`
-              : 'https://via.placeholder.com/300x450?text=Sem+Poster'
-          }
-          alt={movie.title}
-          style={styles.poster}
-        />
+      {loading && <Loading />}
 
-        <div style={styles.info}>
-          <h1 style={styles.title}>{movie.title}</h1>
+      {!loading && error && (
+        <ErrorMessage message={error} onRetry={loadMovie} />
+      )}
 
-          <div style={styles.meta}>
-            <span>⭐ {movie.vote_average?.toFixed(1)}</span>
-            <span>📅 {movie.release_date?.slice(0, 4)}</span>
+      {!loading && !error && movie && (
+        <div style={styles.content}>
+          <img
+            src={
+              movie.poster_path
+                ? `${IMG_URL_LARGE}${movie.poster_path}`
+                : 'https://via.placeholder.com/300x450?text=Sem+Poster'
+            }
+            alt={movie.title}
+            style={styles.poster}
+          />
+
+          <div style={styles.info}>
+            <h1 style={styles.title}>{movie.title}</h1>
+
+            <div style={styles.meta}>
+              <span>⭐ {movie.vote_average?.toFixed(1)}</span>
+              <span>📅 {movie.release_date?.slice(0, 4)}</span>
+            </div>
+
+            <div style={styles.genres}>
+              {movie.genres?.map((genre) => (
+                <span key={genre.id} style={styles.genre}>
+                  {genre.name}
+                </span>
+              ))}
+            </div>
+
+            <h3 style={styles.overviewTitle}>Sinopse</h3>
+            <p style={styles.overview}>
+              {movie.overview || 'Sinopse não disponível.'}
+            </p>
           </div>
-
-          <div style={styles.genres}>
-            {movie.genres?.map((genre) => (
-              <span key={genre.id} style={styles.genre}>
-                {genre.name}
-              </span>
-            ))}
-          </div>
-
-          <h3 style={styles.overviewTitle}>Sinopse</h3>
-          <p style={styles.overview}>
-            {movie.overview || 'Sinopse não disponível.'}
-          </p>
         </div>
-      </div>
+      )}
     </main>
   );
 }
@@ -65,11 +82,6 @@ const styles = {
     padding: '40px 32px',
     maxWidth: '900px',
     margin: '0 auto',
-  },
-  loading: {
-    padding: '40px',
-    color: '#aaa',
-    textAlign: 'center',
   },
   backBtn: {
     background: 'none',
