@@ -27,3 +27,15 @@ export async function searchMovies(query) {
   const data = await response.json();
   return data.results;
 }
+
+export async function fetchMovieDetails(id) {
+  const response = await fetch(
+    `${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=pt-BR`
+  );
+
+  if (!response.ok) {
+    throw new Error('Erro ao buscar detalhes do filme');
+  }
+
+  return response.json();
+}

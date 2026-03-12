@@ -1,8 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import { IMG_URL } from '../services/movieService';
 
 function MovieCard({ movie }) {
+  const navigate = useNavigate();
+
   return (
-    <div style={styles.card}>
+    <div
+      style={styles.card}
+      onClick={() => navigate(`/movie/${movie.id}`)}
+    >
       <img
         src={
           movie.poster_path
@@ -32,6 +38,7 @@ const styles = {
     overflow: 'hidden',
     border: '1px solid #2a2a2a',
     cursor: 'pointer',
+    transition: 'transform 0.2s',
   },
   poster: {
     width: '100%',
