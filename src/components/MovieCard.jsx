@@ -1,8 +1,14 @@
+import { IMG_URL } from '../services/movieService';
+
 function MovieCard({ movie }) {
   return (
     <div style={styles.card}>
       <img
-        src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
+        src={
+          movie.poster_path
+            ? `${IMG_URL}${movie.poster_path}`
+            : 'https://via.placeholder.com/300x450?text=Sem+Poster'
+        }
         alt={movie.title}
         style={styles.poster}
       />
@@ -25,7 +31,6 @@ const styles = {
     borderRadius: '10px',
     overflow: 'hidden',
     border: '1px solid #2a2a2a',
-    transition: 'transform 0.2s, box-shadow 0.2s',
     cursor: 'pointer',
   },
   poster: {
