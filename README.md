@@ -1,71 +1,93 @@
-# Getting Started with Create React App
+# 🎬 Movie Search App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicação web para busca e descoberta de filmes, desenvolvida em React com integração à API do TMDB.
 
-## Available Scripts
+🔗 **[Acesse o projeto ao vivo](https://movie-search-app-gtv5.vercel.app)**
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## ✨ Funcionalidades
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- 🔥 Listagem de filmes populares
+- 🔍 Busca de filmes em tempo real
+- 🎬 Página de detalhes com sinopse, gêneros e avaliação
+- ❤️ Sistema de favoritos com persistência no localStorage
+- ⚡ Indicador de carregamento e tratamento de erros
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🛠️ Tecnologias
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [React](https://reactjs.org/)
+- [React Router DOM](https://reactrouter.com/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [TMDB API](https://www.themoviedb.org/documentation/api)
+- [Vercel](https://vercel.com/) — deploy
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 📁 Estrutura de pastas
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+src/
+├── components/
+│   ├── Navbar.jsx
+│   ├── MovieCard.jsx
+│   ├── SearchBar.jsx
+│   ├── Loading.jsx
+│   └── ErrorMessage.jsx
+├── pages/
+│   ├── Home.jsx
+│   ├── MovieDetail.jsx
+│   └── Favorites.jsx
+├── services/
+│   └── movieService.js
+└── context/
+└── FavoritesContext.jsx
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🚀 Como rodar localmente
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Pré-requisitos
+- Node.js instalado
+- Chave de API do [TMDB](https://www.themoviedb.org/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Instalação
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/movie-search-app.git
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Entre na pasta
+cd movie-search-app
 
-## Learn More
+# Instale as dependências
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Configurar variável de ambiente
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Crie um arquivo `.env` na raiz do projeto:
+REACT_APP_TMDB_KEY=sua_chave_aqui
 
-### Code Splitting
+### Rodar o projeto
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+npm start
+```
 
-### Analyzing the Bundle Size
+Acesse [http://localhost:3000](http://localhost:3000) no navegador.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
+## 📦 Build para produção
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```bash
+npm run build
+```
 
-### Advanced Configuration
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📝 Licença
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-# Movie-Search-App
+Este projeto está sob a licença MIT.
