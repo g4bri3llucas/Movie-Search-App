@@ -1,8 +1,21 @@
 # 🎬 Movie Search App
 
-Aplicação web para busca e descoberta de filmes, desenvolvida em React com integração à API do TMDB.
+Aplicação web para busca e descoberta de filmes, desenvolvida em React com dados da API do TMDB.
 
-🔗 **[Acesse o projeto ao vivo](https://movie-search-app-gtv5.vercel.app)**
+[![React](https://img.shields.io/badge/React-19-61dafb?style=flat-square&logo=react)](https://react.dev)
+[![React Router](https://img.shields.io/badge/React_Router-7-ca4245?style=flat-square&logo=reactrouter)](https://reactrouter.com)
+[![TMDB](https://img.shields.io/badge/API-TMDB-01b4e4?style=flat-square)](https://www.themoviedb.org/documentation/api)
+[![Deploy](https://img.shields.io/badge/Deploy-Vercel-000000?style=flat-square&logo=vercel)](https://movie-search-app-gtv5.vercel.app)
+
+🔗 **Demo online:** [movie-search-app-gtv5.vercel.app](https://movie-search-app-gtv5.vercel.app)
+
+---
+
+## 📸 Screenshots
+
+| Home | Detalhes do filme | Favoritos |
+| :---: | :---: | :---: |
+| ![Home](docs/screenshots/home.png) | ![Detalhes](docs/screenshots/detalhes.png) | ![Favoritos](docs/screenshots/favoritos.png) |
 
 ---
 
@@ -11,72 +24,69 @@ Aplicação web para busca e descoberta de filmes, desenvolvida em React com int
 - 🔥 Listagem de filmes populares
 - 🔍 Busca de filmes em tempo real
 - 🎬 Página de detalhes com sinopse, gêneros e avaliação
-- ❤️ Sistema de favoritos com persistência no localStorage
+- ❤️ Sistema de favoritos com persistência no `localStorage`
 - ⚡ Indicador de carregamento e tratamento de erros
 
 ---
 
 ## 🛠️ Tecnologias
 
-- [React](https://reactjs.org/)
-- [React Router DOM](https://reactrouter.com/)
-- [React Icons](https://react-icons.github.io/react-icons/)
-- [TMDB API](https://www.themoviedb.org/documentation/api)
-- [Vercel](https://vercel.com/) — deploy
+- **Interface:** React 19 e React Icons
+- **Navegação:** React Router DOM 7
+- **Build:** Create React App (react-scripts)
+- **Dados:** [TMDB API](https://www.themoviedb.org/documentation/api)
+- **Deploy:** Vercel
 
 ---
 
 ## 📁 Estrutura de pastas
 
+```
 src/
-├── components/
-│   ├── Navbar.jsx
-│   ├── MovieCard.jsx
-│   ├── SearchBar.jsx
-│   ├── Loading.jsx
-│   └── ErrorMessage.jsx
-├── pages/
-│   ├── Home.jsx
-│   ├── MovieDetail.jsx
-│   └── Favorites.jsx
-├── services/
-│   └── movieService.js
-└── context/
-└── FavoritesContext.jsx
+├── components/   # Navbar, MovieCard, SearchBar, Loading, ErrorMessage
+├── pages/        # Home, MovieDetail, Favorites
+├── context/      # Estado global dos favoritos
+└── services/     # Comunicação com a API do TMDB
+```
 
 ---
 
 ## 🚀 Como rodar localmente
 
-### Pré-requisitos
-- Node.js instalado
-- Chave de API do [TMDB](https://www.themoviedb.org/)
+**Pré-requisitos:** Node.js instalado e uma chave gratuita da API do [TMDB](https://www.themoviedb.org/settings/api).
 
-### Instalação
+1. Clone o repositório:
 
 ```bash
-# Clone o repositório
-git clone https://github.com/seu-usuario/movie-search-app.git
+git clone https://github.com/g4bri3llucas/Movie-Search-App.git
+cd Movie-Search-App
+```
 
-# Entre na pasta
-cd movie-search-app
+2. Instale as dependências:
 
-# Instale as dependências
+```bash
 npm install
 ```
 
-### Configurar variável de ambiente
+3. Configure a chave da API. Copie o arquivo de exemplo:
 
-Crie um arquivo `.env` na raiz do projeto:
+```bash
+cp .env.example .env
+```
+
+Depois edite o `.env` e coloque a sua chave:
+
+```
 REACT_APP_TMDB_KEY=sua_chave_aqui
+```
 
-### Rodar o projeto
+4. Inicie o projeto:
 
 ```bash
 npm start
 ```
 
-Acesse [http://localhost:3000](http://localhost:3000) no navegador.
+O app abre em [http://localhost:3000](http://localhost:3000).
 
 ---
 
@@ -90,4 +100,12 @@ npm run build
 
 ## 📝 Licença
 
-Este projeto está sob a licença MIT.
+Distribuído sob a licença MIT. Veja o arquivo [LICENSE](LICENSE).
+
+---
+
+## 👤 Autor
+
+Desenvolvido por **Gabriel Lucas** · [GitHub](https://github.com/g4bri3llucas)
+
+*Este produto usa a API do TMDB, mas não é endossado nem certificado pelo TMDB.*
